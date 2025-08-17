@@ -1,0 +1,4 @@
+output * bg /home/yggdrasil/.config/backgrounds/004.jpeg fill
+
+include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf"
+include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf")'

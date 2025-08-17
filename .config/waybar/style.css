@@ -1,0 +1,198 @@
+@import "colors.css";
+
+* {
+    color: @lavender;
+    border: 0;
+    padding: 0 0;
+    font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#workspaces,
+#clock,
+#custom-swap,
+#battery,
+#cpu,
+#memory,
+#disk,
+#idle_inhibitor,
+#temperature,
+#custom-keyboard-layout,
+#backlight,
+#network,
+#pulseaudio,
+#mode,
+#window,
+#tray,
+#custom-power,
+#custom-pacman,
+#custom-launcher,
+#custom-system{
+    padding: 5px 8px;
+    background-color: @base;
+    margin: 8px 0;
+}
+
+#workspaces {
+    background-color: @base;
+    border-radius: 10px;
+    margin: 8px 0px 8px 8px;
+    padding: 0px 10px;
+}
+
+#workspaces * {
+    color: @text;
+}
+
+#workspaces button {
+    color: @subtext0;
+    border-radius: 50%;
+    margin: 0px 0px;
+    padding: 4 6 2 0;
+}
+
+#workspaces button:hover {
+    color: @mauve;
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button.focused {
+    color: @mauve;
+    border-radius: 20px;
+}
+
+#mode {
+    border-radius: 10px;
+    color: @mauve;
+    margin-right: 5px;
+}
+
+#window {
+    border-radius: 10px;
+    color: @base;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: @mauve;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#custom-swap {
+    border-radius: 10px;
+    color: @base;
+    margin-left: 15px;
+    background-color: @mauve;
+}
+
+#clock {
+    color: @sky;
+    border-radius: 10px;
+    margin: 8px 10px;
+}
+
+#backlight {
+    color: @yellow;
+    border-radius: 10px 0 0 10px;
+}
+
+#battery {
+    color: @green;
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
+}
+
+#battery.charging {
+    color: @text;
+}
+
+#battery.warning:not(.charging) {
+    color: @yellow;
+}
+
+@keyframes blink {
+    to {
+        color: @red;
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-system,
+#cpu,
+#cpu #cpu-icon,
+#memory,
+#disk {
+    color: @sky;
+}
+
+#network {
+    color: @green;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+#network.disabled,
+#network.disconnected {
+    color: @red;
+}
+
+#pulseaudio {
+    color: @flamingo;
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
+}
+
+#pulseaudio.muted {
+    color: @overlay0;
+}
+
+#temperature {
+    color: @teal;
+    border-radius: 10px 0 0 10px;
+}
+
+#temperature.critical {
+    color: @red;
+}
+
+#idle_inhibitor {
+    background-color: @text;
+    color: @base;
+    border-radius: 10px;
+}
+
+#tray {
+    margin: 8px 10px;
+    border-radius: 10px;
+}
+
+#custom-launcher {
+    background-color: @mauve;
+    color: @base;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-left: 15px;
+}
+
+#custom-power {
+    color: @base;
+    background-color: @red;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 15px;
+    padding: 5px 10px;
+}
