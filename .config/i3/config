@@ -1,0 +1,12 @@
+# =========================
+# Basic Settings
+# =========================
+set $mod Mod4
+set $term /usr/bin/ghostty
+set $browser flatpak run app.zen_browser.zen
+font pango:monospace 8
+
+# =========================
+# Load Modular Configs
+# =========================
+include ~/.config/i3/conf.d/*.conf
