@@ -1,0 +1,6 @@
+onfiguration {
+    modi: "drun";            
+    show-icons: false;       
+}
+
+@theme "~/.config/rofi/dmenu-style.rasi"

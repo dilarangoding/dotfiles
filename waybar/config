@@ -1,0 +1,110 @@
+{
+    "position": "bottom",
+    "modules-left": [
+        "sway/workspaces"
+    ],
+    "modules-right": [
+        "cpu",
+        "custom/sep",
+        "disk",
+        "custom/sep",
+        "memory",
+        "custom/sep",
+        "load",
+        "custom/sep",
+        "temperature",
+        "custom/sep",
+        "network",
+        "custom/sep",
+        "pulseaudio",
+        "custom/sep",
+        "backlight",
+        "custom/sep",
+        "battery",
+        "custom/sep",
+        "clock",
+        "custom/sep",
+        "tray"
+    ],
+
+    "custom/sep": {
+        "format": "|",
+        "interval": 300,
+        "tooltip": false
+    },
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}",
+        "tooltip": false
+    },
+
+    "cpu": {
+        "format": "CPU: {usage}%",
+        "tooltip": false
+    },
+
+    "disk": {
+        "path": "/",
+        "format": "Disk: {free}",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "RAM: {used} / {total}",
+        "tooltip": false
+    },
+
+    "load": {
+        "format": "Hot Loads: {load5}",
+        "tooltip": false
+    },
+
+    "temperature": {
+        "format": "Temp: {temperatureC}°C",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": "W: Leaked IP: {ipaddr}/{cidr}",
+        "format-ethernet": "E: Leaked IP: j{ipaddr}",
+        "format-disconnected": "Network: Down",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "Vol: {volume}%",
+        "format-muted": "Vol: MUT",
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+
+    "backlight": {
+        "format": "BL: {percent}%",
+        "tooltip": false
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+            "format": "BAT: {capacity}%",
+            "format-charging": "CHR: {capacity}%",
+            "format-plugged": "PLUG: {capacity}%",
+            "format-full": "BAT: FULL",
+            "format-unknown": "BAT: UNK",
+        "tooltip": false
+    },
+    "clock": {
+        "format": "{:%Y-%m-%d %H:%M}",
+        "tooltip": false
+    },
+
+    "tray": {
+        "spacing": 8,
+	"icon-size": 12,
+        "tooltip": false
+    }
+}
