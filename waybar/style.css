@@ -27,6 +27,16 @@
     margin: 0 0;
     color: #ffffff;
 }
+#idle_inhibitor {
+    padding: 0 6px;
+    margin: 0 2px;
+    color: #ffffff;
+}
+
+#idle_inhibitor:hover {
+    background: #3a6181;
+    color: #ffffff;
+}
 
 #network {
     padding: 0 4px;

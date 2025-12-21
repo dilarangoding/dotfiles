@@ -4,6 +4,8 @@
         "sway/workspaces"
     ],
     "modules-right": [
+        "idle_inhibitor",
+        "custom/sep",
         "cpu",
         "custom/sep",
         "disk",
@@ -33,6 +35,13 @@
         "tooltip": false
     },
 
+     "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
