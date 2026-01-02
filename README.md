@@ -172,10 +172,16 @@ ln -sf "$DOTFILES_DIR/alacritty" "$CONFIG_DIR/"
 ln -sf "$DOTFILES_DIR/backgrounds" "$CONFIG_DIR/"
 ln -sf "$DOTFILES_DIR/bat" "$CONFIG_DIR/"
 ln -sf "$DOTFILES_DIR/nvim" "$CONFIG_DIR/"
+ln -sf "$DOTFILES_DIR/i3" "$CONFIG_DIR/"
 ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/"
 ln -sf "$DOTFILES_DIR/starship.toml" "$CONFIG_DIR/"
 
+# Create scripts directory and link scripts
+mkdir -p "$CONFIG_DIR/i3/scripts"
+ln -sf "$DOTFILES_DIR/scripts/i3-background-swap.sh" "$CONFIG_DIR/i3/scripts/"
+
 chmod +x "$DOTFILES_DIR/sway/scripts/"*.sh
+chmod +x "$DOTFILES_DIR/scripts/"*.sh
 ```
 
 ## Configuration
