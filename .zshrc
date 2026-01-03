@@ -61,8 +61,8 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SUDO_EDITOR=nvim
 export FCEDIT=nvim
-export TERMINAL=alacritty
-export BROWSER=com.brave.Browser
+export TERMINAL=kitty
+export BROWSER=firefox
 if [[ -x "$(command -v bat)" ]]; then
 	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 	export PAGER=bat
@@ -260,3 +260,4 @@ source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
 export PATH=$HOME/.local/bin:$PATH
+
