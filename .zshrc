@@ -188,7 +188,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias cat='bat'
-
+alias icat="kitten icat" alias pimg="kitten icat --hold"
 # Alias for neovim
 if [[ -x "$(command -v nvim)" ]]; then
 	alias vi='nvim'

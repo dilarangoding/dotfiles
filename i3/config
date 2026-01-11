@@ -47,7 +47,7 @@ bindsym $mod+Shift+p exec --no-startup-id flameshot full -c -p ~/Pictures
 bindsym $mod+Shift+v exec --no-startup-id parcellite
 
 # Wallpaper switcher
-bindsym $mod+Mod1+space exec --no-startup-id ~/.config/i3/scripts/i3-background-swap.sh
+bindsym $mod+Mod1+space exec --no-startup-id ~/.config/scripts/i3-background-swap.sh
 
 # Focus navigation
 bindsym $mod+j focus left
