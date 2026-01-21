@@ -188,7 +188,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias cat='bat'
-alias icat="kitten icat" alias pimg="kitten icat --hold"
+alias icat="kitten icat" 
+alias pimg="kitten icat --hold"
 alias lg='lazygit'
 
 # Alias for neovim
@@ -267,3 +268,4 @@ export PATH=$HOME/.local/bin:$PATH
 [ -s "/home/yggdrasil/.bun/_bun" ] && source "/home/yggdrasil/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
