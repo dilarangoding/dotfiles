@@ -4,15 +4,14 @@ set $browser firefox
 
 
 font pango:monospace 8
-
+exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1
 exec --no-startup-id dex --autostart --environment i3
-
+exec_always --no-startup-id setxkbmap -option caps:escape 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Start clipboard manager
-exec --no-startup-id parcellite
-
+exec --no-startup-id clipse -listen
 # Restore wallpaper
 #exec --no-startup-id ~/.fehbg
 
@@ -44,8 +43,7 @@ bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 bindsym $mod+Shift+p exec --no-startup-id flameshot full -c -p ~/Pictures
 
 # Clipboard manager
-bindsym $mod+Shift+v exec --no-startup-id parcellite
-
+bindsym $mod+Shift+v exec --no-startup-id $term --class clipse-tui clipse
 # Wallpaper switcher
 #bindsym $mod+Mod1+space exec --no-startup-id ~/.config/scripts/i3-background-swap.sh
 
@@ -179,6 +177,7 @@ for_window [title="Open File"] floating enable, resize set width 45 ppt height 4
 for_window [title="nmtui"] floating enable, resize set width 40 ppt height 55 ppt, move position center
 for_window [title="htop"] floating enable, resize set width 50 ppt height 60 ppt, move position center
 for_window [title="Picture in picture"] floating enable, sticky enable
+for_window [class="clipse-tui"] floating enable, resize set 800 500, move position center
 
 bar {
     status_command i3status -c ~/.config/i3/i3status.conf
