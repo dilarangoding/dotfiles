@@ -187,10 +187,10 @@ alias rmdir='rmdir -v'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias cat='bat'
-alias icat="kitten icat" 
-alias pimg="kitten icat --hold"
 alias lg='lazygit'
+alias ls='ls --color=auto'
+alias ll='ls -lah --color=auto'
+alias grep='grep --color=auto'
 
 # Alias for neovim
 if [[ -x "$(command -v nvim)" ]]; then
