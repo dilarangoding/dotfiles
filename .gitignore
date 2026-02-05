@@ -14,16 +14,29 @@ desktop.ini
 .zsh_sessions/
 .zcompdump*
 
-# Neovim
-nvim/.netrwhist
-nvim/plugin/
-nvim/lazy-lock.json
-nvim/spell/
-nvim/.luarc.json
-nvim/lua/.luarc.json
+# Neovim (new path: .config/nvim/)
+.config/nvim/.netrwhist
+.config/nvim/plugin/
+.config/nvim/lazy-lock.json
+.config/nvim/spell/
+.config/nvim/.luarc.json
+.config/nvim/lua/.luarc.json
 
 # Lazygit state
-lazygit/state.yml
+.config/lazygit/state.yml
+
+# Newsboat cache (keep urls and config, ignore cache)
+.config/newsboat/cache.db
+.config/newsboat/*.db
+
+# Joplin (ignore everything except keymap)
+.config/joplin/*
+!.config/joplin/keymap.json
+!.config/joplin/.gitkeep
+
+# Tmux (ignore tmux plugin manager data)
+.config/tmux/plugins/*
+!.config/tmux/plugins/tmuxifier
 
 # SSH and Security
 *.pem
@@ -45,7 +58,6 @@ id_ed25519*
 *.backup
 *.old
 *_backup
-*~
 
 # Compiled files
 *.pyc
@@ -69,28 +81,16 @@ vendor/
 .npm/
 .cargo/
 
-# Local config files
+# Local configs
 *local.conf
 *local.toml
 *.local
 
-# Screenshots
-screenshots/
-
-# Alacritty (if you want to ignore)
-# alacritty/alacritty.toml
-
-# Sway/i3 (if you want to ignore)
-# sway/
-# rofi/
-
-# Scripts that might contain local paths
-# scripts/
-
-# Keep empty directories
-!.gitkeep
-
-# Local directory rules
+# Local directory - ignore data/state, track bin
 .local/share/*
 .local/state/*
 !.local/bin/
+!.local/bin/**
+
+# Keep empty directories
+!.gitkeep
