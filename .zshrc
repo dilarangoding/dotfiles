@@ -18,8 +18,7 @@ autoload -Uz _zinit
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
+    zdharma-continuum/zinit-annex-patch-dl
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-completions
@@ -159,10 +158,6 @@ function y() {
 # Add the most common personal binary paths located inside the home folder
 # (these directories are only added if they exist)
 pathprepend "$HOME/bin" "$HOME/sbin" "$HOME/.local/bin" "$HOME/local/bin" "$HOME/.bin"
-
-# Check for the Rust package manager binary install location
-# Link: https://doc.rust-lang.org/cargo/index.html
-pathappend "$HOME/.cargo/bin"
 
 # Add Tmuxifier to path
 pathappend "$HOME/.config/tmux/plugins/tmuxifier/bin"
