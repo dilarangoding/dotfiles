@@ -22,14 +22,13 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 # Add in zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit light jeffreytse/zsh-vi-mode
+zinit light zsh-users/zsh-syntax-highlighting
 
 # Disable the cursor style feature
-# ZVM_CURSOR_STYLE_ENABLED=false
 ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BEAM
 ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
 ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_BLINKING_UNDERLINE
@@ -63,32 +62,28 @@ export SUDO_EDITOR=nvim
 export FCEDIT=nvim
 export TERMINAL=kitty
 export BROWSER=firefox
-if [[ -x "$(command -v bat)" ]]; then
-	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-	export PAGER=bat
-fi
 
 if [[ -x "$(command -v fzf)" ]]; then
-	export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-	  --info=inline-right \
-	  --ansi \
-	  --layout=reverse \
-	  --border=rounded \
-	  --color=border:#27a1b9 \
-	  --color=fg:#c0caf5 \
-	  --color=gutter:#16161e \
-	  --color=header:#ff9e64 \
-	  --color=hl+:#2ac3de \
-	  --color=hl:#2ac3de \
-	  --color=info:#545c7e \
-	  --color=marker:#ff007c \
-	  --color=pointer:#ff007c \
-	  --color=prompt:#2ac3de \
-	  --color=query:#c0caf5:regular \
-	  --color=scrollbar:#27a1b9 \
-	  --color=separator:#ff9e64 \
-	  --color=spinner:#ff007c \
-	"
+    export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+      --info=inline-right \
+      --ansi \
+      --layout=reverse \
+      --border=rounded \
+      --color=border:#27a1b9 \
+      --color=fg:#c0caf5 \
+      --color=gutter:#16161e \
+      --color=header:#ff9e64 \
+      --color=hl+:#2ac3de \
+      --color=hl:#2ac3de \
+      --color=info:#545c7e \
+      --color=marker:#ff007c \
+      --color=pointer:#ff007c \
+      --color=prompt:#2ac3de \
+      --color=query:#c0caf5:regular \
+      --color=scrollbar:#27a1b9 \
+      --color=separator:#ff9e64 \
+      --color=spinner:#ff007c \
+    "
 fi
 
 #######################################################
@@ -153,12 +148,12 @@ function pathprepend() {
 
 # y shell wrapper that provides the ability to change the current working directory when exiting Yazi.
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 
 # Add the most common personal binary paths located inside the home folder
@@ -190,41 +185,35 @@ alias egrep='egrep --color=auto'
 alias lg='lazygit'
 alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
-alias grep='grep --color=auto'
+alias jp='joplin'
 
 # Alias for neovim
 if [[ -x "$(command -v nvim)" ]]; then
-	alias vi='nvim'
-	alias vim='nvim'
-	alias svi='sudo nvim'
-	alias vis='nvim "+set si"'
+    alias vi='nvim'
+    alias vim='nvim'
+    alias svi='sudo nvim'
+    alias vis='nvim "+set si"'
 elif [[ -x "$(command -v vim)" ]]; then
-	alias vi='vim'
-	alias svi='sudo vim'
-	alias vis='vim "+set si"'
+    alias vi='vim'
+    alias svi='sudo vim'
+    alias vis='vim "+set si"'
 fi
 
 # Alias for lsd
 if [[ -x "$(command -v lsd)" ]]; then
-	alias ls='lsd -F --group-dirs first'
-	alias ll='lsd --all --header --long --group-dirs first'
-	alias tree='lsd --tree'
+    alias ls='lsd -F --group-dirs first'
+    alias ll='lsd --all --header --long --group-dirs first'
+    alias tree='lsd --tree'
 fi
 
 # Alias to launch a document, file, or URL in it's default X application
 if [[ -x "$(command -v xdg-open)" ]]; then
-	alias open='runfree xdg-open'
+    alias open='xdg-open'
 fi
 
 # Alias to launch a document, file, or URL in it's default PDF reader
 if [[ -x "$(command -v evince)" ]]; then
-    alias pdf='runfree evince'
-fi
-
-# Alias For bat
-# Link: https://github.com/sharkdp/bat
-if [[ -x "$(command -v bat)" ]]; then
-    alias cat='bat'
+    alias pdf='evince'
 fi
 
 # Alias for FZF
@@ -232,11 +221,11 @@ fi
 if [[ -x "$(command -v fzf)" ]]; then
     alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
     # Alias to fuzzy find files in the current folder(s), preview them, and launch in an editor
-	if [[ -x "$(command -v xdg-open)" ]]; then
-		alias preview='open $(fzf --info=inline --query="${@}")'
-	else
-		alias preview='edit $(fzf --info=inline --query="${@}")'
-	fi
+    if [[ -x "$(command -v xdg-open)" ]]; then
+        alias preview='open $(fzf --info=inline --query="${@}")'
+    else
+        alias preview='edit $(fzf --info=inline --query="${@}")'
+    fi
 fi
 
 # Get local IP addresses
@@ -262,10 +251,15 @@ source <(fzf --zsh)
 
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
-export PATH=$HOME/.local/bin:$PATH
 
-
-[ -s "/home/yggdrasil/.bun/_bun" ] && source "/home/yggdrasil/.bun/_bun"
+# Setup Bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
+# Setup fnm
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --use-on-cd)"
+fi

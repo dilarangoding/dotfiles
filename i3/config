@@ -32,7 +32,7 @@ font pango:IosevkaNerdFontMono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id st
+bindsym $mod+Return exec --no-startup-id kitty
 
 # scrot
 bindsym --release $mod+s exec --no-startup-id scrot -s ~/Pictures/Screenshots/'%Y-%m-%d_%H-%M-%S.png' 
@@ -172,6 +172,4 @@ bar {
 }
 
 focus_follows_mouse no
-hide_edge_borders both
-exec --no-startup-id nitrogen --restore
 bindsym $mod+x exec i3lock -c 000000

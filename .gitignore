@@ -1,65 +1,91 @@
+# System and Editor files
 *.log
 *.cache
 *.pid
 *.swp
 *.swo
 *~
-
-.zsh_history
-.zsh_sessions/
-.zcompdump*
-
-nvim/.netrwhist
-nvim/plugin/
-nvim/lazy-lock.json
-nvim/spell/
-
-lazygit/state.yml
-
-*.pem
-*.key
-id_rsa*
-id_ed25519*
-
-*.gpg
-*.asc
-
-*password*
-*secret*
-.env
-.env.*
-
 .DS_Store
 Thumbs.db
 desktop.ini
 
+# Zsh specific
+.zsh_history
+.zsh_sessions/
+.zcompdump*
+
+# Neovim
+nvim/.netrwhist
+nvim/plugin/
+nvim/lazy-lock.json
+nvim/spell/
+nvim/.luarc.json
+nvim/lua/.luarc.json
+
+# Lazygit state
+lazygit/state.yml
+
+# SSH and Security
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*.gpg
+*.asc
+
+# Secrets and Environment
+*password*
+*secret*
+.env
+.env.*
+*.env.local
+
+# Backup files
 *.bak
 *.backup
 *.old
 *_backup
+*~
 
+# Compiled files
 *.pyc
 *.o
 *.so
 *.class
 
+# IDE specific
 .vscode/
 .idea/
 *.code-workspace
 
+# Temporary directories
 tmp/
 temp/
 cache/
 
+# Dependencies
 node_modules/
 vendor/
 .npm/
 .cargo/
 
+# Local config files
 *local.conf
 *local.toml
 *.local
 
+# Screenshots
 screenshots/
 
+# Alacritty (if you want to ignore)
+# alacritty/alacritty.toml
+
+# Sway/i3 (if you want to ignore)
+# sway/
+# rofi/
+
+# Scripts that might contain local paths
+# scripts/
+
+# Keep empty directories
 !.gitkeep
