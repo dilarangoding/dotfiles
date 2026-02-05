@@ -1,0 +1,3 @@
+[submodule ".config/tmux/plugins/tmuxifier"]
+	path = .config/tmux/plugins/tmuxifier
+	url = https://github.com/jimeh/tmuxifier.git

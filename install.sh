@@ -92,15 +92,42 @@ main() {
     print_info "Installing dotfiles from: $DOTFILES_DIR"
     echo ""
 
+    # Initialize git submodules (for tmuxifier)
+    print_info "Initializing git submodules..."
+    if [ -f .gitmodules ]; then
+        git submodule update --init --recursive
+        print_success "Submodules initialized"
+    else
+        print_warning "No submodules found"
+    fi
+    echo ""
+
     # Link .config files
     print_info "Linking .config files..."
     create_symlink "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
     create_symlink "$DOTFILES_DIR/.config/kitty" "$HOME/.config/kitty"
     create_symlink "$DOTFILES_DIR/.config/i3" "$HOME/.config/i3"
-    create_symlink "$DOTFILES_DIR/.config/joplin" "$HOME/.config/joplin"
     create_symlink "$DOTFILES_DIR/.config/lf" "$HOME/.config/lf"
     create_symlink "$DOTFILES_DIR/.config/gtk-3.0" "$HOME/.config/gtk-3.0"
     create_symlink "$DOTFILES_DIR/.config/starship.toml" "$HOME/.config/starship.toml"
+    create_symlink "$DOTFILES_DIR/.config/tmux" "$HOME/.config/tmux"
+
+    # Handle joplin - only symlink keymap.json, not the whole directory
+    print_info "Linking joplin keymap..."
+    if [ ! -d "$HOME/.config/joplin" ]; then
+        mkdir -p "$HOME/.config/joplin"
+        print_info "Created directory: $HOME/.config/joplin"
+    fi
+    create_symlink "$DOTFILES_DIR/.config/joplin/keymap.json" "$HOME/.config/joplin/keymap.json"
+
+    # Handle newsboat - symlink urls and config
+    print_info "Linking newsboat config..."
+    if [ ! -d "$HOME/.config/newsboat" ]; then
+        mkdir -p "$HOME/.config/newsboat"
+        print_info "Created directory: $HOME/.config/newsboat"
+    fi
+    create_symlink "$DOTFILES_DIR/.config/newsboat/urls" "$HOME/.config/newsboat/urls"
+    create_symlink "$DOTFILES_DIR/.config/newsboat/config" "$HOME/.config/newsboat/config"
 
     echo ""
 
