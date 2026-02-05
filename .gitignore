@@ -89,3 +89,8 @@ screenshots/
 
 # Keep empty directories
 !.gitkeep
+
+# Local directory rules
+.local/share/*
+.local/state/*
+!.local/bin/

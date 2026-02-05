@@ -61,16 +61,6 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 #######################################################
-# Environment Variables
-#######################################################
-export EDITOR=nvim
-export VISUAL=nvim
-export SUDO_EDITOR=nvim
-export FCEDIT=nvim
-export TERMINAL=kitty
-export BROWSER=firefox
-
-#######################################################
 # FZF Configuration
 #######################################################
 if [[ -x "$(command -v fzf)" ]]; then
