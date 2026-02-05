@@ -1,6 +1,8 @@
 # Created by newuser for 5.9
 
-### Added by Zinit's installer
+#######################################################
+# Zinit Plugin Manager Setup
+#######################################################
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
@@ -13,44 +15,50 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl
 
-# Add in zsh plugins
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
 
-# Disable the cursor style feature
 ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BEAM
 ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
 ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_BLINKING_UNDERLINE
 
-
-# Load completions
 autoload -Uz compinit && compinit
-
 zinit cdreplay -q
 
+#######################################################
+# ZSH Options
+#######################################################
+setopt autocd
+setopt correct
+setopt interactivecomments
+setopt magicequalsubst
+setopt nonomatch
+setopt notify
+setopt numericglobsort
+setopt promptsubst
 
 #######################################################
-# ZSH Basic Options
+# History Configuration
 #######################################################
-setopt autocd              # change directory just by typing its name
-setopt correct             # auto correct mistakes
-setopt interactivecomments # allow comments in interactive mode
-setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
-setopt nonomatch           # hide error message if there is no match for the pattern
-setopt notify              # report the status of background jobs immediately
-setopt numericglobsort     # sort filenames numerically when it makes sense
-setopt promptsubst         # enable command substitution in prompt
-
+HISTSIZE=10000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
 #######################################################
 # Environment Variables
@@ -62,6 +70,9 @@ export FCEDIT=nvim
 export TERMINAL=kitty
 export BROWSER=firefox
 
+#######################################################
+# FZF Configuration
+#######################################################
 if [[ -x "$(command -v fzf)" ]]; then
     export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
       --info=inline-right \
@@ -86,32 +97,15 @@ if [[ -x "$(command -v fzf)" ]]; then
 fi
 
 #######################################################
-# ZSH Keybindings
+# Keybindings
 #######################################################
 bindkey -v
-bindkey "^[[A" history-beginning-search-backward  # search history with up key
-bindkey "^[[B" history-beginning-search-forward   # search history with down key
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 #######################################################
-# History Configuration
+# Completion Styling
 #######################################################
-
-HISTSIZE=10000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-
-#######################################################
-# Completion styling
-#######################################################
-
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
@@ -121,11 +115,8 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 #######################################################
-# Add Common Binary Directories to Path
+# Path Management Functions
 #######################################################
-
-# Add directories to the end of the path if they exist and are not already in the path
-# Link: https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
 function pathappend() {
     for ARG in "$@"
     do
@@ -135,7 +126,6 @@ function pathappend() {
     done
 }
 
-# Add directories to the beginning of the path if they exist and are not already in the path
 function pathprepend() {
     for ARG in "$@"
     do
@@ -145,7 +135,9 @@ function pathprepend() {
     done
 }
 
-# y shell wrapper that provides the ability to change the current working directory when exiting Yazi.
+#######################################################
+# Custom Functions
+#######################################################
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
     yazi "$@" --cwd-file="$tmp"
@@ -155,17 +147,15 @@ function y() {
     rm -f -- "$tmp"
 }
 
-# Add the most common personal binary paths located inside the home folder
-# (these directories are only added if they exist)
+#######################################################
+# Path Setup
+#######################################################
 pathprepend "$HOME/bin" "$HOME/sbin" "$HOME/.local/bin" "$HOME/local/bin" "$HOME/.bin"
-
-# Add Tmuxifier to path
 pathappend "$HOME/.config/tmux/plugins/tmuxifier/bin"
 
 #######################################################
-# Aliases
+# Aliases - Basic
 #######################################################
-
 alias c='clear'
 alias q='exit'
 alias ..='cd ..'
@@ -177,12 +167,15 @@ alias rmdir='rmdir -v'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+#######################################################
+# Aliases - Applications
+#######################################################
 alias lg='lazygit'
+alias jp='joplin'
 alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
-alias jp='joplin'
 
-# Alias for neovim
 if [[ -x "$(command -v nvim)" ]]; then
     alias vi='nvim'
     alias vim='nvim'
@@ -194,28 +187,22 @@ elif [[ -x "$(command -v vim)" ]]; then
     alias vis='vim "+set si"'
 fi
 
-# Alias for lsd
 if [[ -x "$(command -v lsd)" ]]; then
     alias ls='lsd -F --group-dirs first'
     alias ll='lsd --all --header --long --group-dirs first'
     alias tree='lsd --tree'
 fi
 
-# Alias to launch a document, file, or URL in it's default X application
 if [[ -x "$(command -v xdg-open)" ]]; then
     alias open='xdg-open'
 fi
 
-# Alias to launch a document, file, or URL in it's default PDF reader
 if [[ -x "$(command -v evince)" ]]; then
     alias pdf='evince'
 fi
 
-# Alias for FZF
-# Link: https://github.com/junegunn/fzf
 if [[ -x "$(command -v fzf)" ]]; then
     alias fzf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
-    # Alias to fuzzy find files in the current folder(s), preview them, and launch in an editor
     if [[ -x "$(command -v xdg-open)" ]]; then
         alias preview='open $(fzf --info=inline --query="${@}")'
     else
@@ -223,14 +210,15 @@ if [[ -x "$(command -v fzf)" ]]; then
     fi
 fi
 
-# Get local IP addresses
+#######################################################
+# Aliases - Network
+#######################################################
 if [[ -x "$(command -v ip)" ]]; then
     alias iplocal="ip -br -c a"
 else
     alias iplocal="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 fi
 
-# Get public IP addresses
 if [[ -x "$(command -v curl)" ]]; then
     alias ipexternal="curl -s ifconfig.me && echo"
 elif [[ -x "$(command -v wget)" ]]; then
@@ -238,26 +226,26 @@ elif [[ -x "$(command -v wget)" ]]; then
 fi
 
 #######################################################
-# Shell integrations
+# External Tool Integrations
 #######################################################
-
-# Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
 
-# Setup Bun
+#######################################################
+# Language/Runtime Setup
+#######################################################
+# Bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
-# Setup fnm
+# FNM (Fast Node Manager)
 FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "$(fnm env --use-on-cd)"
 fi
 
-# Setup tmuxifier
+# Tmuxifier
 eval "$(tmuxifier init -)"
