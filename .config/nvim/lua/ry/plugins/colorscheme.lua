@@ -1,9 +1,7 @@
 return {
-	"NLKNguyen/papercolor-theme",
-	lazy = false,
-	priority = 1000,
-	config = function()
-		vim.opt.background = "dark"
-		vim.cmd("colorscheme PaperColor")
-	end,
+  "arturgoms/moonbow.nvim",
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme("moonbow")
+  end,
 }
