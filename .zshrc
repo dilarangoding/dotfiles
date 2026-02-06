@@ -175,6 +175,7 @@ alias lg='lazygit'
 alias jp='joplin'
 alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
+alias nb='newsboat'
 
 if [[ -x "$(command -v nvim)" ]]; then
     alias vi='nvim'

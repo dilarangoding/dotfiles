@@ -3,11 +3,10 @@ return {
   lazy = false,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
-    "nvim-tree/nvim-web-devicons"
   },
   opts = {
     preview = {
-      filetypes = { "markdown", "quarto"},
+      filetypes = { "markdown", "quarto" },
       ignore_buftypes = {},
     },
   }

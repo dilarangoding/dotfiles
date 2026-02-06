@@ -35,7 +35,7 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id kitty
 
 # scrot
-bindsym --release $mod+s exec --no-startup-id scrot -s ~/Pictures/Screenshots/'%Y-%m-%d_%H-%M-%S.png' 
+bindsym --release $mod+s exec --no-startup-id scrot -s ~/Pictures/Screenshots/'%Y-%m-%d_%H-%M-%S.png'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -172,4 +172,5 @@ bar {
 }
 
 focus_follows_mouse no
+hide_edge_borders both
 bindsym $mod+x exec i3lock -c 000000
