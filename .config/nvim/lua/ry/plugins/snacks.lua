@@ -4,6 +4,9 @@ return {
   lazy = false,
   opts = {
     bigfile = { enabled = true },
+    explorer = {
+      enabled = true,
+    },
     dashboard = {
       enabled = true,
       preset = {
@@ -22,7 +25,13 @@ return {
     indent = { enabled = false },
     input = { enabled = true },
     git = { enabled = true },
-    picker = { enabled = false },
+    picker = {
+      sources = {
+        explorer = {
+          hidden = true,
+        },
+      },
+    },
     notifier = { enabled = true },
     quickfile = { enabled = true },
     scroll = { enabled = false },
