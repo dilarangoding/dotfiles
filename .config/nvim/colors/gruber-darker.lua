@@ -443,6 +443,13 @@ hi("SnacksExplorerInput", { fg = c.fg, bg = c.bg })
 hi("SnacksExplorerInputBorder", { fg = c.bg4, bg = c.bg })
 hi("SnacksExplorerInputTitle", { fg = c.yellow, bg = c.bg, bold = true })
 
+hi("SnacksPickerFile", { fg = c.fg1 })
+hi("SnacksPickerDir", { fg = c.niagara, bold = true })
+hi("SnacksPickerPathHidden", { fg = c.fg1 })
+hi("SnacksPickerPathIgnored", { fg = c.fg1 })
+hi("SnacksPickerHidden", { fg = c.fg1 })
+hi("SnacksExplorerFile", { fg = c.fg1 })
+
 -- ============================================================================
 -- Indent Blankline / Mini Indentscope
 -- ============================================================================
