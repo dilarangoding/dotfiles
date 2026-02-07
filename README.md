@@ -17,10 +17,10 @@ dotfiles/
 ├── newsboat/           # ~/.newsboat/
 ├── nvim/               # ~/.config/nvim/
 ├── st/                 # Suckless terminal (built from source, not stowed)
-│   ├── st-src/         # Patched st source code
+│   ├── st-src/         # Full patched source code (ready to build)
 │   │   ├── config.def.h
 │   │   └── config.h    # Personal config (edit this)
-│   └── patches/        # .diff patch files
+│   └── patches/        # .diff patch files (kept for reference)
 ├── tmux/               # ~/.config/tmux/ (includes tmuxifier submodule)
 ├── w3m/                # ~/.w3m/
 ├── zsh/                # ~/.zshrc
@@ -64,6 +64,9 @@ make kitty
 ```
 
 ### 3. Build st (suckless terminal)
+
+The full st source code is already included in `st/st-src/` with all patches applied.
+You do **not** need to clone st separately. Just build and install:
 
 ```sh
 cd ~/dotfiles/st/st-src
@@ -125,10 +128,33 @@ This is already handled automatically by `make install`.
 
 ## st (Suckless Terminal)
 
-st is configured at compile time. The source lives in `st/st-src/` and is tracked
-directly in this repo (not stowed).
+st is configured at compile time. Unlike other packages that use stow, st is a C program
+that you build from source. The entire source code — including all applied patches — is
+committed directly in `st/st-src/`. The `.diff` files in `st/patches/` are kept for
+reference only.
 
-### Applying a Patch
+**On a fresh machine, all you need to do is:**
+
+```sh
+cd ~/dotfiles/st/st-src
+sudo make clean install
+```
+
+No cloning, no patching — everything is already in the repo and ready to build.
+
+### Editing Config
+
+Edit `st/st-src/config.h` and rebuild:
+
+```sh
+cd ~/dotfiles/st/st-src
+sudo make clean install
+```
+
+> **Note**: `config.def.h` is the upstream default with patches applied.
+> Do not edit it directly. Always edit `config.h`.
+
+### Applying a New Patch
 
 1. Download the patch into `st/patches/`:
 
@@ -154,6 +180,8 @@ patch -p1 < ../patches/<file>.diff
 sudo make clean install
 ```
 
+6. Commit the changes so the patch is baked into the repo for next time.
+
 ### Removing a Patch
 
 ```sh
@@ -162,29 +190,63 @@ patch -Rp1 < ../patches/<file>.diff
 sudo make clean install
 ```
 
+### Upgrading st to a New Version
+
+If a new st version is released upstream and you want to upgrade:
+
+1. Clone the new st source to a temporary directory:
+
+```sh
+git clone https://git.suckless.org/st /tmp/st-new
+```
+
+2. Back up your current `config.h`:
+
+```sh
+cp ~/dotfiles/st/st-src/config.h ~/dotfiles/st/config.h.bak
+```
+
+3. Replace the source (keep `patches/` and `README.md`):
+
+```sh
+rm -rf ~/dotfiles/st/st-src
+cp -r /tmp/st-new ~/dotfiles/st/st-src
+rm -rf ~/dotfiles/st/st-src/.git
+```
+
+4. Re-apply patches one by one from `st/patches/`:
+
+```sh
+cd ~/dotfiles/st/st-src
+patch -p1 < ../patches/<patch-file>.diff
+```
+
+5. Copy your backed-up `config.h` and resolve any differences with the new `config.def.h`.
+
+6. Rebuild and commit:
+
+```sh
+sudo make clean install
+```
+
 ### Currently Applied Patches
 
-| Patch                        | Description                                      |
-| ---------------------------- | ------------------------------------------------ |
+| Patch                        | Description                                       |
+| ---------------------------- | ------------------------------------------------- |
 | scrollback                   | Scroll back through output with Shift+PageUp/Down |
-| scrollback-mouse             | Scroll back with Shift+MouseWheel                |
-| scrollback-mouse-altscreen   | MouseWheel scrolls without Shift outside alt screen |
-| externalpipe                 | Pipe terminal output to external commands        |
-| boxdraw                      | Gapless box-drawing and braille characters       |
-| clipboard                    | Selection automatically copies to clipboard      |
-| bold-is-not-bright           | Bold text does not change color                  |
-| anysize                      | No pixel gaps in tiling WMs like i3              |
+| scrollback-mouse             | Scroll back with Shift+MouseWheel                 |
+| scrollback-mouse-altscreen   | MouseWheel scrolls without Shift outside altscreen |
+| externalpipe                 | Pipe terminal output to external commands         |
+| boxdraw                      | Gapless box-drawing and braille characters        |
+| clipboard                    | Selection automatically copies to clipboard       |
+| bold-is-not-bright           | Bold text does not change color                   |
+| anysize                      | No pixel gaps in tiling WMs like i3               |
 
-### Config
-
-All configuration is in `st/st-src/config.h`. Key settings:
+### Current Config
 
 - **Font**: `Iosevka Nerd Font:pixelsize=16`
 - **Colorscheme**: Gruber Darker
 - **Boxdraw**: enabled (lines, bold, braille)
-
-> **Note**: `config.def.h` is the upstream default with patches applied — do not edit it
-> directly. Always edit `config.h`.
 
 ## Notes
 
@@ -193,6 +255,4 @@ All configuration is in `st/st-src/config.h`. Key settings:
 - `fonts/` contains Iosevka Nerd Font (Regular, Bold, Italic, BoldItalic).
 - `backgrounds/` is not stowed — reference wallpapers directly from `~/dotfiles/backgrounds/`.
 - After adding new fonts, rebuild the font cache: `fc-cache -fv`.
-```
-
-Now let me also clean up the leftover `.orig` file and verify the git state:
+- Applications themselves (binaries) are installed via your package manager (`apt`), not through this repo. This repo only manages configuration files.
