@@ -26,6 +26,48 @@ zinit light Aloxaf/fzf-tab
 zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
 
+#######################################################
+# Spaceship Prompt Configuration (keep it lean)
+#######################################################
+SPACESHIP_PROMPT_ORDER=(
+  dir
+  git
+  venv
+  line_sep
+  char
+)
+
+SPACESHIP_RPROMPT_ORDER=(
+  exec_time
+)
+
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_SEPARATE_LINE=true
+
+# Dir
+SPACESHIP_DIR_TRUNC=3
+SPACESHIP_DIR_TRUNC_REPO=false
+
+# Git
+SPACESHIP_GIT_BRANCH_SHOW=true
+SPACESHIP_GIT_STATUS_SHOW=true
+SPACESHIP_GIT_STATUS_STASHED=""
+
+# Char
+SPACESHIP_CHAR_SYMBOL="❯ "
+SPACESHIP_CHAR_SYMBOL_ROOT="❯❯ "
+SPACESHIP_CHAR_COLOR_SUCCESS=green
+SPACESHIP_CHAR_COLOR_FAILURE=red
+
+# Exec time
+SPACESHIP_EXEC_TIME_SHOW=true
+SPACESHIP_EXEC_TIME_ELAPSED=3
+
+# Venv
+SPACESHIP_VENV_SHOW=true
+
+zinit light spaceship-prompt/spaceship-prompt
+
 ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BEAM
 ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
 ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_BLINKING_UNDERLINE
@@ -231,7 +273,7 @@ fi
 #######################################################
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(starship init zsh)"
+
 
 #######################################################
 # Language/Runtime Setup
