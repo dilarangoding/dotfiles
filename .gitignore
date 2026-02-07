@@ -14,29 +14,35 @@ desktop.ini
 .zsh_sessions/
 .zcompdump*
 
-# Neovim (new path: .config/nvim/)
-.config/nvim/.netrwhist
-.config/nvim/plugin/
-.config/nvim/lazy-lock.json
-.config/nvim/spell/
-.config/nvim/.luarc.json
-.config/nvim/lua/.luarc.json
+# Neovim
+nvim/.config/nvim/.netrwhist
+nvim/.config/nvim/plugin/
+nvim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/spell/
+nvim/.config/nvim/.luarc.json
+nvim/.config/nvim/lua/.luarc.json
 
 # Lazygit state
 .config/lazygit/state.yml
 
 # Newsboat cache (keep urls and config, ignore cache)
-.config/newsboat/cache.db
-.config/newsboat/*.db
+newsboat/.newsboat/cache.db
+newsboat/.newsboat/*.db
 
 # Joplin (ignore everything except keymap)
-.config/joplin/*
-!.config/joplin/keymap.json
-!.config/joplin/.gitkeep
+joplin/.config/joplin/*
+!joplin/.config/joplin/keymap.json
 
-# Tmux (ignore tmux plugin manager data)
-.config/tmux/plugins/*
-!.config/tmux/plugins/tmuxifier
+# Tmux (ignore tmux plugin data except tmuxifier)
+tmux/.config/tmux/plugins/*
+!tmux/.config/tmux/plugins/tmuxifier
+
+# st build artifacts
+st/st-src/st
+st/st-src/*.o
+st/st-src/*.tar.gz
+st/st-src/*.orig
+st/st-src/*.rej
 
 # SSH and Security
 *.pem
@@ -61,7 +67,6 @@ id_ed25519*
 
 # Compiled files
 *.pyc
-*.o
 *.so
 *.class
 
@@ -85,12 +90,6 @@ vendor/
 *local.conf
 *local.toml
 *.local
-
-# Local directory - ignore data/state, track bin
-.local/share/*
-.local/state/*
-!.local/bin/
-!.local/bin/**
 
 # Keep empty directories
 !.gitkeep
