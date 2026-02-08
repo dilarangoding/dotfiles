@@ -46,42 +46,8 @@ zinit light Aloxaf/fzf-tab
 zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
 
-# ─── Prompt (Spaceship) ──────────────────────────────────────────────
-SPACESHIP_PROMPT_ORDER=(dir git venv line_sep char)
-SPACESHIP_RPROMPT_ORDER=(exec_time)
-
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=true
-
-SPACESHIP_DIR_TRUNC=3
-SPACESHIP_DIR_TRUNC_REPO=false
-
-SPACESHIP_GIT_BRANCH_SHOW=true
-SPACESHIP_GIT_STATUS_SHOW=true
-SPACESHIP_GIT_STATUS_PREFIX=" ["
-SPACESHIP_GIT_STATUS_SUFFIX="]"
-SPACESHIP_GIT_STATUS_UNTRACKED="?"
-SPACESHIP_GIT_STATUS_ADDED="+"
-SPACESHIP_GIT_STATUS_MODIFIED="!"
-SPACESHIP_GIT_STATUS_RENAMED="» "
-SPACESHIP_GIT_STATUS_DELETED="✘ "
-SPACESHIP_GIT_STATUS_STASHED=""
-SPACESHIP_GIT_STATUS_UNMERGED="="
-SPACESHIP_GIT_STATUS_AHEAD="⇡ "
-SPACESHIP_GIT_STATUS_BEHIND="⇣ "
-SPACESHIP_GIT_STATUS_DIVERGED="⇕ "
-
-SPACESHIP_CHAR_SYMBOL="❯ "
-SPACESHIP_CHAR_SYMBOL_ROOT="❯❯ "
-SPACESHIP_CHAR_COLOR_SUCCESS=green
-SPACESHIP_CHAR_COLOR_FAILURE=red
-
-SPACESHIP_EXEC_TIME_SHOW=true
-SPACESHIP_EXEC_TIME_ELAPSED=3
-
-SPACESHIP_VENV_SHOW=true
-
-zinit light spaceship-prompt/spaceship-prompt
+# ─── Prompt (Starship) ──────────────────────────────────────────────
+eval "$(starship init zsh)"
 
 # ─── Completions ─────────────────────────────────────────────────────
 autoload -Uz compinit && compinit
@@ -104,7 +70,37 @@ ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BEAM
 ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
 ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_BLINKING_UNDERLINE
 
+# ─── Environment Variables ───────────────────────────────────────────
+export EDITOR=nvim
+export VISUAL=nvim
+export SUDO_EDITOR=nvim
+export FCEDIT=nvim
+export TERMINAL=st
+export BROWSER=firefox
+
+# ─── PATH Setup ──────────────────────────────────────────────────────
+export PATH="$HOME/.local/bin:$HOME/.bin:$HOME/bin:$PATH"
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Go
+export GOPATH="$HOME/go"
+export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
+
+# Tmuxifier
+export PATH="$PATH:$HOME/.config/tmux/plugins/tmuxifier/bin"
+
+# Rust (Cargo)
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+export PATH="$HOME/.local/share/fnm:$PATH"
 # ─── Tool Integrations ──────────────────────────────────────────────
+if [[ -x "$(command -v fnm)" ]]; then
+  eval "$(fnm env --use-on-cd)"
+fi
+
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --info=inline-right \
   --ansi \
@@ -130,31 +126,10 @@ eval "$(zoxide init --cmd cd zsh)"
 
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-if [ -d "$HOME/.local/share/fnm" ]; then
-  eval "$(fnm env --use-on-cd)"
-fi
 
 if (( $+commands[tmuxifier] )); then
   eval "$(tmuxifier init -)"
 fi
-
-# ─── Environment Variables ───────────────────────────────────────────
-export EDITOR=nvim
-export VISUAL=nvim
-export SUDO_EDITOR=nvim
-export FCEDIT=nvim
-export TERMINAL=st
-export BROWSER=firefox
-
-# ─── PATH Setup ──────────────────────────────────────────────────────
-export PATH="$HOME/.local/bin:$HOME/.bin:$HOME/bin:$PATH"
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$HOME/.local/share/fnm:$PATH"
-export GOPATH="$HOME/go"
-export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-export PATH="$PATH:$HOME/.config/tmux/plugins/tmuxifier/bin"
 
 # ─── Functions ───────────────────────────────────────────────────────
 function y() {
