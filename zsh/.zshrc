@@ -86,7 +86,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Go
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/.local/share/go"
 export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 
 # Tmuxifier
