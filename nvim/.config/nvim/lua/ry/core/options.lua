@@ -33,3 +33,14 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- whitespace characters
+opt.list = true -- show whitespace characters
+opt.listchars = {
+  tab = "→ ",      -- show tabs as arrow
+  trail = "·",     -- show trailing spaces as dots
+  nbsp = "␣",      -- show non-breaking spaces
+  extends = "⟩",   -- show when line extends beyond screen
+  precedes = "⟨",  -- show when line precedes beyond screen
+  space = "·",     -- show spaces as dots (optional, bisa di-comment kalau terlalu ramai)
+}

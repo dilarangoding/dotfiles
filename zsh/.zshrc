@@ -205,3 +205,10 @@ if [[ -x "$(command -v curl)" ]]; then
 elif [[ -x "$(command -v wget)" ]]; then
     alias ipexternal="wget -qO- ifconfig.me && echo"
 fi
+
+# fnm
+FNM_PATH="/home/ry/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi

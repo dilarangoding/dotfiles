@@ -40,9 +40,8 @@ return {
 			ensure_installed = {
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
-				"isort", -- python formatter
-				"black", -- python formatter
-				"pylint",
+				-- Python tools removed - install via pipx or apt instead
+				-- "isort", "black", "pylint"
 				"eslint_d",
 				"gofumpt",
 			},
