@@ -1,0 +1,30 @@
+[user]
+	email = riyon@riyonaryono.net
+	name = Riyon Aryono
+[core]
+    editor = nvim
+    autocrlf = input
+[init]
+    defaultBranch = main
+[pull]
+    rebase = true
+[push]
+    autoSetupRemote = true
+    default = current
+[color]
+    ui = auto
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+[diff]
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
