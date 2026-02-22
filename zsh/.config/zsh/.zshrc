@@ -188,3 +188,9 @@ fi
 
 # ─── Powerlevel10k Config ───────────────────────────────────────────
 [[ -f "${ZDOTDIR:-$HOME}/.p10k.zsh" ]] && source "${ZDOTDIR:-$HOME}/.p10k.zsh"
+# fnm
+FNM_PATH="/home/ry/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
