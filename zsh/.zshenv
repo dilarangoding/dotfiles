@@ -46,4 +46,5 @@ export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
 # ── PATH ──────────────────────────────────────────────────────────
-export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$BUN_INSTALL/bin:$FNM_PATH:$HOME/.config/tmux/plugins/tmuxifier/bin:$PATH"
+export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$BUN_INSTALL/bin:$FNM_PATH:$XDG_DATA_HOME/bob/nvim-bin:$HOME/.config/tmux/plugins/tmuxifier/bin:$PATH"
+. "$CARGO_HOME/env"

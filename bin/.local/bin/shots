@@ -1,0 +1,9 @@
+#!/bin/sh
+export _1600PR_SITE_TITLE="Shots by Riyon"
+export _1600PR_SITE_URL="https://shots.riyonaryono.net/"
+export _1600PR_EMAIL="riyon@riyonaryono.net"
+export _1600PR_DB_FILE="$HOME/dev/personal/shots/_1600pr.dat"
+export _1600PR_IMAGE_DIR="$HOME/dev/personal/shots/images"
+export _1600PR_OUTPUT_DIR="$HOME/dev/personal/shots/public"
+
+1600pr "$@"
