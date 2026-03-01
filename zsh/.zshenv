@@ -17,7 +17,7 @@ export TERMINAL=foot
 export BROWSER=firefox
 
 # ── PATH ──────────────────────────────────────────────────────────
-
+export GOPATH="$XDG_DATA_HOME/go"
 path=(
   "$HOME/.local/bin"                              # Local binaries
   "/usr/local/go/bin"                             # Go compiler
