@@ -29,7 +29,10 @@ output * bg ~/.dotfiles/backgrounds/006.jpg fill
     bindsym $mod+Shift+q kill
 
     # Start launcher (desktop apps only)
-    bindsym $mod+d exec j4-dmenu-desktop --dmenu="wmenu -i"
+    bindsym $mod+d exec wmenu-run -i 
+  
+    #j4-dmenu-desktop --dmenu="wmenu -i"
+  
     # Screenshot — region select
     bindsym --release $mod+s exec grim -g "$(slurp)" ~/Pictures/$(date +'%Y-%m-%d_%H-%M-%S').png
     # Screenshot — full screen

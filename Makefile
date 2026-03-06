@@ -1,5 +1,5 @@
 STOW := stow -v -t ~
-PACKAGES := zsh git sway i3status foot gtk fonts nvim tmux
+PACKAGES := zsh git sway i3status foot gtk fonts nvim tmux newsboat
 NO_FOLD_PACKAGES := bin
 
 .PHONY: all install uninstall restow $(PACKAGES) $(NO_FOLD_PACKAGES)
