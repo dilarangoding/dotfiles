@@ -1,10 +1,3 @@
-# ─── Powerlevel10k Instant Prompt ────────────────────────────────────
-# Must stay at the top. Initialization code that may require console
-# input (password prompts, [y/n] confirmations, etc.) must go above.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # ─── Zinit (plugin manager) ──────────────────────────────────────────
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -57,10 +50,6 @@ zinit wait lucid for \
     Aloxaf/fzf-tab \
     atinit"zicompinit; zicdreplay" \
         zsh-users/zsh-syntax-highlighting
-
-# ─── Prompt (Powerlevel10k) ─────────────────────────────────────────
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
 
 # Completions handled by turbo block above (zicompinit + zicdreplay)
 
@@ -187,11 +176,3 @@ elif [[ -x "$(command -v wget)" ]]; then
     alias ipexternal="wget -qO- ifconfig.me && echo"
 fi
 
-# ─── Powerlevel10k Config ───────────────────────────────────────────
-[[ -f "${ZDOTDIR:-$HOME}/.p10k.zsh" ]] && source "${ZDOTDIR:-$HOME}/.p10k.zsh"
-# fnm
-FNM_PATH="/home/ry/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
