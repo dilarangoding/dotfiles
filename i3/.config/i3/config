@@ -32,10 +32,11 @@ font pango:Iosevka Nerd Font 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id st
+bindsym $mod+Return exec --no-startup-id kitty
 
 # scrot
-bindsym --release $mod+s exec --no-startup-id scrot -s ~/Pictures/Screenshots/'%Y-%m-%d_%H-%M-%S.png'
+bindsym --release $mod+s exec --no-startup-id scrot -s ~/Pictures/'%Y-%m-%d_%H-%M-%S.png'
+bindsym $mod+Shift+p exec --no-startup-id scrot ~/Pictures/'%Y-%m-%d_%H-%M-%S.png'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -174,3 +175,5 @@ bar {
 focus_follows_mouse no
 hide_edge_borders both
 bindsym $mod+x exec i3lock -c 000000
+exec_always --no-startup-id feh --bg-fill ~/.dotfiles/backgrounds/006.jpg
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
