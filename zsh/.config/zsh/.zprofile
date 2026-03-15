@@ -1,2 +1,4 @@
-export XDG_DATA_DIRS="/usr/local/share:/usr/share:$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share"
+if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
+    exec startx
+fi
 

@@ -25,7 +25,6 @@ path=(
   "$HOME/go/bin"                                  # Go modules
   "$HOME/.bun/bin"                                # Bun
   "$HOME/.local/share/fnm"                        # fnm (Node.js)
-  "$XDG_DATA_HOME/bob/nvim-bin"                   # Neovim (bob)
   "$HOME/.config/tmux/plugins/tmuxifier/bin"      # Tmuxifier
   $path                                           # System default
 )
