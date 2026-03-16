@@ -83,22 +83,22 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=spinner:#ff007c \
 "
 
-zinit ice wait lucid atinit'source <(fzf --zsh)'
-zinit light zdharma-continuum/null
+zinit ice wait lucid id-as"fzf-init" atinit'source <(fzf --zsh)'
+zinit snippet /dev/null
 
-zinit ice wait lucid atinit'eval "$(zoxide init --cmd cd zsh)"'
-zinit light zdharma-continuum/null
+zinit ice wait lucid id-as"zoxide-init" atinit'eval "$(zoxide init --cmd cd zsh)"'
+zinit snippet /dev/null
 
-zinit ice wait lucid atinit'
+zinit ice wait lucid id-as"fnm-init" atinit'
   if (( $+commands[fnm] )); then
     eval "$(fnm env --use-on-cd)"
   fi
 '
-zinit light zdharma-continuum/null
+zinit snippet /dev/null
 
 if (( $+commands[tmuxifier] )); then
-  zinit ice wait lucid atinit'eval "$(tmuxifier init -)"'
-  zinit light zdharma-continuum/null
+  zinit ice wait lucid id-as"tmuxifier-init" atinit'eval "$(tmuxifier init -)"'
+  zinit snippet /dev/null
 fi
 
 # ─── Functions ───────────────────────────────────────────────────────
@@ -174,4 +174,5 @@ if [[ -x "$(command -v curl)" ]]; then
 elif [[ -x "$(command -v wget)" ]]; then
     alias ipexternal="wget -qO- ifconfig.me && echo"
 fi
+
 PROMPT="%~ %# "
