@@ -13,8 +13,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export EDITOR=nvim
 export VISUAL=nvim
 export SUDO_EDITOR=nvim
-export TERMINAL=foot
-export BROWSER=firefox
+export TERMINAL=st
+export BROWSER=w3m
 
 # ── PATH ──────────────────────────────────────────────────────────
 export GOPATH="$XDG_DATA_HOME/go"
