@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+COMMAND=$1
+DB_NAME="mysql-local"
+
+start_services() {
+    podman start $DB_NAME || podman run -d --name $DB_NAME -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secret mysql:8.2
+    sudo systemctl start php-fpm
+}
+
+stop_services() {
+    podman stop $DB_NAME
+    sudo systemctl stop php-fpm
+}
+
+case $COMMAND in
+    start)
+        start_services
+        ;;
+    stop)
+        stop_services
+        ;;
+    *)
+        echo "Usage: xamp {start|stop}"
+        exit 1
+        ;;
+esac
