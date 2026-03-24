@@ -127,7 +127,7 @@ alias egrep='egrep --color=auto'
 alias lg='lazygit'
 alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
-alias nb='newsboat'
+alias nr='newsraft'
 
 if [[ -x "$(command -v nvim)" ]]; then
     alias vi='nvim'
