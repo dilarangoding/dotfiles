@@ -128,6 +128,8 @@ alias lg='lazygit'
 alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
 alias nr='newsraft'
+alias serve='python3 -m http.server'
+
 
 if [[ -x "$(command -v nvim)" ]]; then
     alias vi='nvim'
