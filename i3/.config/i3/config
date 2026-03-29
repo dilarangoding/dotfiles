@@ -35,9 +35,7 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id st 
 
 # scrot
-bindsym --release $mod+s exec --no-startup-id scrot -s ~/pictures/'%Y-%m-%d_%H-%M-%S.png'
-bindsym $mod+Shift+p exec --no-startup-id scrot ~/pictures/'%Y-%m-%d_%H-%M-%S.png'
-
+bindsym --release $mod+s exec --no-startup-id sh -c 'maim -s | tee ~/pictures/$(date +"%Y-%m-%d_%H-%M-%S").png | xclip -selection clipboard -t image/png'
 # kill focused window
 bindsym $mod+Shift+q kill
 
