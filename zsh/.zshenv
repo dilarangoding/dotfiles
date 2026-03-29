@@ -22,7 +22,7 @@ path=(
   "$HOME/.local/bin"                              # Local binaries
   "/usr/local/go/bin"                             # Go compiler
   "$HOME/.cargo/bin"                              # Rust / Cargo
-  "$HOME/go/bin"                                  # Go modules
+  "$GOPATH/bin"                                   # Go modules (UBAH JADI GINI)
   "$HOME/.bun/bin"                                # Bun
   "$HOME/.local/share/fnm"                        # fnm (Node.js)
   "$HOME/.config/tmux/plugins/tmuxifier/bin"      # Tmuxifier
