@@ -26,6 +26,7 @@ path=(
   "$HOME/.bun/bin"                                # Bun
   "$HOME/.local/share/fnm"                        # fnm (Node.js)
   "$HOME/.config/tmux/plugins/tmuxifier/bin"      # Tmuxifier
+  "$HOME/.nimble/bin"
   $path                                           # System default
 )
 export PATH
