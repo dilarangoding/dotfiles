@@ -15,6 +15,7 @@ export VISUAL=nvim
 export SUDO_EDITOR=nvim
 export TERMINAL=st
 export BROWSER=w3m
+export TERM="st-256color"
 
 # ── PATH ──────────────────────────────────────────────────────────
 export GOPATH="$XDG_DATA_HOME/go"

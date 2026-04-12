@@ -1,4 +1,4 @@
-#files: 1193	version: 5.9
+#files: 1192	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -44,6 +44,7 @@ _comps=(
 'ansible-pull' '_ansible'
 'ansible-vault' '_ansible'
 'ant' '_ant'
+'antigravity' '_antigravity'
 'antiword' '_antiword'
 'aodh' '_openstack'
 'aoss' '_precommand'
@@ -316,12 +317,6 @@ _comps=(
 'dsh' '_dsh'
 'dtruss' '_dtruss'
 'du' '_du'
-'_dunst' '_dunst'
-'dunst' '_dunst'
-'_dunstctl' '_dunstctl'
-'dunstctl' '_dunstctl'
-'_dunstify' '_dunstify'
-'dunstify' '_dunstify'
 'dvibook' '_dvi'
 'dviconcat' '_dvi'
 'dvicopy' '_dvi'
@@ -342,6 +337,8 @@ _comps=(
 'egrep' '_grep'
 'elfdump' '_elfdump'
 'elinks' '_elinks'
+'elixir' '_elixir'
+'elixirc' '_elixir'
 'emacs' '_emacs'
 'emacsclient' '_emacs'
 'emulate' '_emulate'
@@ -398,6 +395,7 @@ _comps=(
 'finger' '_finger'
 'firefox' '_mozilla'
 '-first-' '_first'
+'fish' '_fish'
 'fixdlsrps' '_psutils'
 'fixfmps' '_psutils'
 'fixmacps' '_psutils'
@@ -409,7 +407,6 @@ _comps=(
 'fixwpps' '_psutils'
 'fixwwps' '_psutils'
 'flac' '_flac'
-'flatpak' '_flatpak'
 'flex' '_flex'
 'flex++' '_flex'
 'flipdiff' '_patchutils'
@@ -672,6 +669,7 @@ _comps=(
 'iconvconfig' '_iconvconfig'
 'id' '_id'
 'identify' '_imagemagick'
+'iex' '_elixir'
 'ifconfig' '_ifconfig'
 'ifdown' '_net_interfaces'
 'iftop' '_iftop'
@@ -744,6 +742,7 @@ _comps=(
 'killall5' '_killall'
 'kioclient' '_kfmclient'
 'kitchen' '_kitchen'
+'kitty' '_kitty'
 'knock' '_knock'
 'konqueror' '_webbrowser'
 'kpartx' '_kpartx'
@@ -984,14 +983,13 @@ _comps=(
 'nginx' '_nginx'
 'ngrep' '_ngrep'
 'nice' '_nice'
-'nim' '_nim'
-'nimble' '_nimble'
 'nkf' '_nkf'
 'nl' '_nl'
 'nm' '_nm'
 'nmap' '_nmap'
 'nmblookup' '_samba'
 'nmcli' '_networkmanager'
+'nnn' '_nnn'
 'nocorrect' '_precommand'
 'node' '_node'
 'noglob' '_precommand'
@@ -1002,6 +1000,7 @@ _comps=(
 'nsenter' '_nsenter'
 'nslookup' '_nslookup'
 'ntalk' '_other_accounts'
+'nu' '_nu'
 'numfmt' '_numfmt'
 'nvim' '_vim'
 'nvm' '_nvm'
@@ -1117,8 +1116,6 @@ _comps=(
 'pmpath' '_perl_modules'
 'pmvers' '_perl_modules'
 'podgrep' '_perl_modules'
-'podman' '_podman'
-'podman-remote' '_podman-remote'
 'podpath' '_perl_modules'
 'podtoc' '_perl_modules'
 'poff' '_pon'
@@ -1175,6 +1172,7 @@ _comps=(
 'pwait' '_pids'
 'pwdx' '_pids'
 'pwgen' '_pwgen'
+'pwsh' '_pwsh'
 'pygmentize' '_pygmentize'
 'pyhtmlizer' '_twisted'
 'qdbus' '_qdbus'
@@ -1509,9 +1507,6 @@ _comps=(
 'typeset' '_typeset'
 'ubuntu-distro-info' '_distro_info'
 'udevadm' '_udevadm'
-'udiskie' '_udiskie'
-'udiskie-mount' '_udiskie-mount'
-'udiskie-umount' '_udiskie-umount'
 'udisksctl' '_udisksctl'
 'ufw' '_ufw'
 'ulimit' '_ulimit'
@@ -1926,45 +1921,44 @@ autoload -Uz _afew _age _archlinux-java _atach _augmatch \
             _concourse _cpack _cpanm _cpm _cppcheck \
             _ctest _dad _dart _dget _dhcpcd \
             _diana _direnv _diskutil _distro_info _docpad \
-            _do-release-upgrade _ecdsautil _emacs _emulator _envdir \
-            _exportfs _fab _fail2ban-client _fail2ban-regex _fallocate \
-            _ffind _flutter _fwupdmgr _gas _ghc \
-            _gio _gist _git-flow _git-pulls _git-revise \
-            _git-wtf _glances _golang _gpgconf _grpcurl \
-            _gtk-launch _hello _hledger _httpie _ibus \
-            _include-what-you-use _inxi _ipcmk _ipcrm _ipcs \
-            _jest _jmeter _jmeter-plugins _jonas _jrnl \
-            _kak _kitchen _l3build _language_codes _ldattach \
-            _lilypond _lscpu _lsipc _lslocks _lslogins \
-            _lsmem _lunchy _mc _mcookie _middleman \
-            _mina _mix _mkcert _mssh _mussh \
-            _mvn _nano _nanoc _neo _neofetch \
-            _networkQuality _nftables _node _nvm _openssl \
-            _openvpn3 _optirun _patool _periscope _phing \
-            _pixz _pkcon _pm2 _port _pre-commit \
-            _protoc _pygmentize _qmk _rails _ralio \
-            _rdfind _redis-cli _rev _rfkill _rmlint \
-            _rslsync _rspec _rubocop _sbt _scala \
-            _screencapture _scrub _sdd _sdkmanager _setcap \
-            _shallow-backup _shellcheck _showoff _sox_ng _srm \
-            _sslscan _subliminal _supervisord _svm _swaplabel \
-            _swapoff _swapon _teamocil _textutil _thor \
-            _tmuxinator _tmuxp _tox _tsc _ts-node \
-            _tsx _udisksctl _ufw _uuidd _uuidgen \
-            _uuidparse _vipw _virtualbox _vnstat _wdctl \
-            _wemux _wg-quick _xdg-mime _xsel _yamllint \
-            _yarn _zcash-cli _zinit _zramctl _bootctl \
-            _busctl _bwrap _coredumpctl _curl _dunst \
-            _dunstctl _dunstify _flatpak _hostnamectl _insmod \
-            _journalctl _kernel-install _localectl _loginctl _lsmod \
-            _machinectl _mkinitcpio _networkctl _nim _nimble \
-            _oomctl _p11-kit _pacman _podman _podman-remote \
+            _do-release-upgrade _ecdsautil _elixir _emacs _emulator \
+            _envdir _exportfs _fab _fail2ban-client _fail2ban-regex \
+            _fallocate _ffind _fish _flutter _fwupdmgr \
+            _gas _ghc _gio _gist _git-flow \
+            _git-pulls _git-revise _git-wtf _glances _golang \
+            _gpgconf _grpcurl _gtk-launch _hello _hledger \
+            _httpie _ibus _include-what-you-use _inxi _ipcmk \
+            _ipcrm _ipcs _jest _jmeter _jmeter-plugins \
+            _jonas _jrnl _kak _kitchen _l3build \
+            _language_codes _ldattach _lilypond _lscpu _lsipc \
+            _lslocks _lslogins _lsmem _lunchy _mc \
+            _mcookie _middleman _mina _mix _mkcert \
+            _mssh _mussh _mvn _nano _nanoc \
+            _neo _neofetch _networkQuality _nftables _node \
+            _nu _nvm _openssl _openvpn3 _optirun \
+            _patool _periscope _phing _pixz _pkcon \
+            _pm2 _port _pre-commit _protoc _pwsh \
+            _pygmentize _qmk _rails _ralio _rdfind \
+            _redis-cli _rev _rfkill _rmlint _rslsync \
+            _rspec _rubocop _sbt _scala _screencapture \
+            _scrub _sdd _sdkmanager _setcap _shallow-backup \
+            _shellcheck _showoff _sox_ng _srm _sslscan \
+            _subliminal _supervisord _svm _swaplabel _swapoff \
+            _swapon _teamocil _textutil _thor _tmuxinator \
+            _tmuxp _tox _tsc _ts-node _tsx \
+            _udisksctl _ufw _uuidd _uuidgen _uuidparse \
+            _vipw _virtualbox _vnstat _wdctl _wemux \
+            _wg-quick _xdg-mime _xsel _yamllint _yarn \
+            _zcash-cli _zinit _zramctl _antigravity _bootctl \
+            _busctl _bwrap _code _coredumpctl _curl \
+            _hostnamectl _insmod _journalctl _kernel-install _kitty \
+            _localectl _loginctl _lsmod _machinectl _mkinitcpio \
+            _networkctl _nnn _oomctl _p11-kit _pacman \
             _pulseaudio _resolvectl _rmmod _run0 _sd_bus_address \
             _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes _sd_unit_files _sensors \
             _sensors-detect _snapper _systemctl _systemd _systemd-analyze \
             _systemd-delta _systemd-id128 _systemd-inhibit _systemd-nspawn _systemd-path \
             _systemd-run _systemd-tmpfiles _timedatectl _trust _udevadm \
-            _udiskie _udiskie-canonical_paths _udiskie-mount _udiskie-umount _udisks2 \
             _userdbctl _varlinkctl _wpctl _yay _zoxide \
             _cdr _all_labels _all_matches _alternative _approximate \
             _arg_compile _arguments _bash_completions _cache_invalid _call_function \
@@ -2128,34 +2122,35 @@ autoload -Uz _afew _age _archlinux-java _atach _augmatch \
             _cpanm _cpm _cppcheck _ctest _dad \
             _dart _dget _dhcpcd _diana _direnv \
             _diskutil _distro_info _docpad _do-release-upgrade _ecdsautil \
-            _emacs _emulator _envdir _exportfs _fab \
-            _fail2ban-client _fail2ban-regex _fallocate _ffind _flutter \
-            _fwupdmgr _gas _ghc _gio _gist \
-            _git-flow _git-pulls _git-revise _git-wtf _glances \
-            _golang _gpgconf _grpcurl _gtk-launch _hello \
-            _hledger _httpie _ibus _include-what-you-use _inxi \
-            _ipcmk _ipcrm _ipcs _jest _jmeter \
-            _jmeter-plugins _jonas _jrnl _kak _kitchen \
-            _l3build _language_codes _ldattach _lilypond _lscpu \
-            _lsipc _lslocks _lslogins _lsmem _lunchy \
-            _mc _mcookie _middleman _mina _mix \
-            _mkcert _mssh _mussh _mvn _nano \
-            _nanoc _neo _neofetch _networkQuality _nftables \
-            _node _nvm _openssl _openvpn3 _optirun \
-            _patool _periscope _phing _pixz _pkcon \
-            _pm2 _port _pre-commit _protoc _pygmentize \
-            _qmk _rails _ralio _rdfind _redis-cli \
-            _rev _rfkill _rmlint _rslsync _rspec \
-            _rubocop _sbt _scala _screencapture _scrub \
-            _sdd _sdkmanager _setcap _setup.py _shallow-backup \
-            _shellcheck _showoff _sox_ng _srm _sslscan \
-            _subliminal _supervisord _svm _swaplabel _swapoff \
-            _swapon _teamocil _textutil _thor _tmuxinator \
-            _tmuxp _tox _tsc _ts-node _tsx \
-            _udisksctl _ufw _uuidd _uuidgen _uuidparse \
-            _vipw _virtualbox _vnstat _wdctl _wemux \
-            _wg-quick _xdg-mime _xsel _yamllint _yarn \
-            _zcash-cli _zramctl
+            _elixir _emacs _emulator _envdir _exportfs \
+            _fab _fail2ban-client _fail2ban-regex _fallocate _ffind \
+            _fish _flutter _fwupdmgr _gas _ghc \
+            _gio _gist _git-flow _git-pulls _git-revise \
+            _git-wtf _glances _golang _gpgconf _grpcurl \
+            _gtk-launch _hello _hledger _httpie _ibus \
+            _include-what-you-use _inxi _ipcmk _ipcrm _ipcs \
+            _jest _jmeter _jmeter-plugins _jonas _jrnl \
+            _kak _kitchen _l3build _language_codes _ldattach \
+            _lilypond _lscpu _lsipc _lslocks _lslogins \
+            _lsmem _lunchy _mc _mcookie _middleman \
+            _mina _mix _mkcert _mssh _mussh \
+            _mvn _nano _nanoc _neo _neofetch \
+            _networkQuality _nftables _node _nu _nvm \
+            _openssl _openvpn3 _optirun _patool _periscope \
+            _phing _pixz _pkcon _pm2 _port \
+            _pre-commit _protoc _pwsh _pygmentize _qmk \
+            _rails _ralio _rdfind _redis-cli _rev \
+            _rfkill _rmlint _rslsync _rspec _rubocop \
+            _sbt _scala _screencapture _scrub _sdd \
+            _sdkmanager _setcap _setup.py _shallow-backup _shellcheck \
+            _showoff _sox_ng _srm _sslscan _subliminal \
+            _supervisord _svm _swaplabel _swapoff _swapon \
+            _teamocil _textutil _thor _tmuxinator _tmuxp \
+            _tox _tsc _ts-node _tsx _udisksctl \
+            _ufw _uuidd _uuidgen _uuidparse _vipw \
+            _virtualbox _vnstat _wdctl _wemux _wg-quick \
+            _xdg-mime _xsel _yamllint _yarn _zcash-cli \
+            _zramctl
 autoload -Uz +X _call_program
 
 typeset -gUa _comp_assocs
