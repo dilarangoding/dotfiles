@@ -173,5 +173,3 @@ default_floating_border pixel 0
 for_window [class="^.*"] border none
 bindsym $mod+x exec i3lock -c 000000
 exec_always --no-startup-id feh --bg-fill ~/.dotfiles/backgrounds/006.jpg
-bindsym $mod+b exec boomer
-exec --no-startup-id lxpolkit

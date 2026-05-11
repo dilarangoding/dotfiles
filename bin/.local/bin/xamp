@@ -1,27 +1,51 @@
 #!/usr/bin/env bash
 
-COMMAND=$1
-DB_NAME="mysql-local"
+#!/usr/bin/env bash
+
+# Nama service di Fedora
+DB_SERVICE="mysqld"
+PHP_SERVICE="php-fpm"
+
+check_status() {
+    echo "--- Status Services ---"
+    for service in $DB_SERVICE $PHP_SERVICE; do
+        if systemctl is-active --quiet $service; then
+            echo "$service: RUNNING"
+        else
+            echo "$service: STOPPED"
+        fi
+    done
+}
 
 start_services() {
-    podman start $DB_NAME || podman run -d --name $DB_NAME -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secret mysql:8.2
-    sudo systemctl start php-fpm
+    echo "Starting services..."
+    sudo systemctl start $DB_SERVICE $PHP_SERVICE
+    check_status
 }
 
 stop_services() {
-    podman stop $DB_NAME
-    sudo systemctl stop php-fpm
+    echo "Stopping services..."
+    sudo systemctl stop $DB_SERVICE $PHP_SERVICE
+    check_status
 }
 
-case $COMMAND in
+case $1 in
     start)
         start_services
         ;;
     stop)
         stop_services
         ;;
+    status)
+        check_status
+        ;;
+    restart)
+        echo "Restarting services..."
+        sudo systemctl restart $DB_SERVICE $PHP_SERVICE
+        check_status
+        ;;
     *)
-        echo "Usage: xamp {start|stop}"
+        echo "Usage: xamp {start|stop|status|restart}"
         exit 1
         ;;
 esac
