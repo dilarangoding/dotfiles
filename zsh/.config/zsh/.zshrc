@@ -23,7 +23,6 @@ setopt promptsubst
 
 # ─── History ─────────────────────────────────────────────────────────
 HISTSIZE=10000
-HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
@@ -95,11 +94,6 @@ zinit ice wait lucid id-as"fnm-init" atinit'
   fi
 '
 zinit snippet /dev/null
-
-if (( $+commands[tmuxifier] )); then
-  zinit ice wait lucid id-as"tmuxifier-init" atinit'eval "$(tmuxifier init -)"'
-  zinit snippet /dev/null
-fi
 
 # ─── Functions ───────────────────────────────────────────────────────
 function y() {

@@ -17,17 +17,32 @@ export TERMINAL=st
 export BROWSER=w3m
 export TERM="st-256color"
 
-# ── PATH ──────────────────────────────────────────────────────────
+# ── Custom directories ──────────────────────────────────────────
+export DEV_DIR="$HOME/dev"
+export NOTES_DIR="$HOME/notes"
+export SRC_DIR="$HOME/src"
+
+# ── PATH ────────────────────────────────────────────────────────
 export GOPATH="$XDG_DATA_HOME/go"
 path=(
   "$HOME/.local/bin"                              # Local binaries
   "/usr/local/go/bin"                             # Go compiler
   "$HOME/.cargo/bin"                              # Rust / Cargo
-  "$GOPATH/bin"                                   # Go modules (UBAH JADI GINI)
+  "$GOPATH/bin"                                   # Go modules
   "$HOME/.bun/bin"                                # Bun
   "$HOME/.local/share/fnm"                        # fnm (Node.js)
   "$HOME/.config/tmux/plugins/tmuxifier/bin"      # Tmuxifier
   "$HOME/.nimble/bin"
+  "$XDG_DATA_HOME/development/flutter/bin"          # Flutter
+  "$XDG_DATA_HOME/android/sdk/platform-tools"       # Android platform-tools
+  "$XDG_DATA_HOME/android/sdk/cmdline-tools/latest/bin" # Android cmdline-tools
   $path                                           # System default
 )
 export PATH
+
+# ── Android / Flutter ───────────────────────────────────────────
+export ANDROID_HOME="$XDG_DATA_HOME/android/sdk"
+export CHROME_EXECUTABLE=/usr/bin/brave-browser
+
+# ── History ─────────────────────────────────────────────────────
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
